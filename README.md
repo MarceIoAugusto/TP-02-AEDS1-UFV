@@ -1,2 +1,2 @@
-# TP-02-AEDS1-UFV
-Repositório designado ao desenvolvimento do TP2 da disciplina de AEDS da UFV.
+# tp01-AEDS-UFV
+Repositório dedicado à produção do trabalho prático da disciplina Algoritmos e Estrutura de Dados (AEDS) do curso de ciência da computação da UFV.
