@@ -16,7 +16,6 @@ typedef struct {
 void InicializaLista(PokeLista *Lista);  
 void InserePokemon(PokeLista *Lista, TipoPokemon *pokemon); 
 int RemovePokemon(PokeLista *Lista, TipoPokemon *pokemon);  
-int BuscaPokemon(PokeLista *Lista, int id, TipoPokemon *pokemon);
 void ImprimeLista(PokeLista *Lista);
 TipoPokemon *getPrimeiroItem(PokeLista Lista);
 int ListaEVazia(PokeLista *Lista);

@@ -33,19 +33,6 @@ int RemovePokemon(PokeLista *Lista, TipoPokemon *pokemon) { /* Remove o Primeiro
     return 1;
 }
 
-int BuscaPokemon(PokeLista *Lista, int id, TipoPokemon *pokemon) { /* Busca o Pokemon na lista pelo ID e o retorna com parametro de saida */
-    PokeCelula *Auxiliar = Lista->Primeiro->Proximo;
-    while (Auxiliar != NULL) {
-        if ((getPokeId(&Auxiliar->Pokemon)) == id) {
-            *pokemon = Auxiliar->Pokemon;
-            return 1;
-        }
-        Auxiliar = Auxiliar->Proximo;
-    }
-    printf("\nErro Id Invalido.");
-    return ERRO; /*Padrão adotado de retorno de erro = -1*/
-}
-
 //Retorna o primeiro pokemon que está em "Primeiro->Proximo->Pokemon"
 TipoPokemon *getPrimeiroItem(PokeLista Lista) {
     return &Lista.Primeiro->Proximo->Pokemon;

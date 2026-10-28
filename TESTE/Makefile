@@ -1,59 +1,82 @@
-# ==========================================================================
+
+# ============================================================
+# COMPILACAO DO TP2 - AEDS1
+#
+# Este Makefile funciona no Linux e no Windows com GNU Make.
+#
 # COMO COMPILAR E EXECUTAR
 #   Este Makefile fica dentro da pasta TESTE. Abra o terminal nessa pasta:
 #       cd TESTE
 #   Depois use:
-#       mingw32-make        -> compila tudo e gera o executavel output/tp1.exe
-#       mingw32-make run    -> compila e executa o programa
-#       mingw32-make clean  -> apaga os arquivos gerados
-#	O arquivo de teste devera estar presente na pasta TESTE.
-#	O Programa solicitara o nome do arquivo <- se não for lido favor usar o comando mingw32-make clean
-# ==========================================================================
+# Linux:
+#   make
+#   make run -> compila e executa o programa
+#   make clean -> apaga os arquivos gerados
+#
+# Windows com MinGW:
+#   mingw32-make
+#   mingw32-make run -> compila e executa o programa
+#   mingw32-make clean -> apaga os arquivos gerados
+# ============================================================
 
 CC = gcc
 
-# -I../headers -> diz ao compilador onde estao os arquivos .h
 CFLAGS = -Wall -Wextra -g -std=c99 -I../headers
 
 SRC = ../sources
 OUT = output
-EXEC = $(OUT)/tp1.exe
 
-# Se algum .h mudar, tudo e recompilado
+# Detecta o sistema operacional.
+ifeq ($(OS),Windows_NT)
+    EXEC = $(OUT)/tp2.exe
+
+    MKDIR = if not exist "$(OUT)" mkdir "$(OUT)"
+    RMDIR = if exist "$(OUT)" rmdir /s /q "$(OUT)"
+    DEL_REPORT = if exist relatorio.txt del /q relatorio.txt
+    RUN = $(EXEC)
+else
+    EXEC = $(OUT)/tp2
+
+    MKDIR = mkdir -p "$(OUT)"
+    RMDIR = rm -rf "$(OUT)"
+    DEL_REPORT = rm -f relatorio.txt
+    RUN = ./$(EXEC)
+endif
+
+# Recompila os objetos se algum cabecalho mudar.
 HEADERS = $(wildcard ../headers/*.h)
 
-OBJS = $(OUT)/main.o $(OUT)/pokemon.o $(OUT)/pokelista.o $(OUT)/treinador.o $(OUT)/centropesquisa.o $(OUT)/saida.o
+# Arquivos objeto que formam o programa.
+OBJS = $(OUT)/main.o \
+       $(OUT)/pokemon.o \
+       $(OUT)/pokelista.o \
+       $(OUT)/treinador.o \
+       $(OUT)/saida.o
 
-
+# Compila o programa completo.
 all: $(EXEC)
 
-
-# Liga todos os objetos e gera o executavel
+# Liga os arquivos objeto e gera o executavel.
 $(EXEC): $(OBJS)
-	$(CC) $(OBJS) -o $(EXEC) -lm
+	$(CC) $(OBJS) -o $@ -lm
 
-
-# main.c esta na pasta TESTE
+# O main.c esta na pasta TESTE.
 $(OUT)/main.o: main.c $(HEADERS)
-	if not exist $(OUT) mkdir $(OUT)
+	$(MKDIR)
 	$(CC) $(CFLAGS) -c main.c -o $@
 
-
-# Os demais .c estao na pasta ../sources
+# Os demais arquivos .c estao na pasta ../sources.
 $(OUT)/%.o: $(SRC)/%.c $(HEADERS)
-	if not exist $(OUT) mkdir $(OUT)
+	$(MKDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-
-# Compila e executa
+# Compila e executa.
 run: $(EXEC)
-	.\$(EXEC)
+	$(RUN)
 
-
-# Apaga os arquivos gerados
+# Remove os arquivos gerados.
 clean:
-	if exist $(OUT) rmdir /s /q $(OUT)
-	if exist relatorio.txt del /q relatorio.txt
-
+	$(RMDIR)
+	$(DEL_REPORT)
 
 .PHONY: all run clean

@@ -1,5 +1,5 @@
 #include "saida.h"
-
+/**
 void ImprimeInicioMissao(TipoTreinador *treinador, int numero_fugitivos) {
     // Variaveis
     double *pos;
@@ -59,3 +59,4 @@ void ConclusaoDaMissao(TipoTreinador *treinador) {
     printf("MISSAO CONCLUIDA\n");
     printf("========================================\n");
 }
+**/
