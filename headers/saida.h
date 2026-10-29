@@ -6,10 +6,12 @@
 #include "treinador.h"
 #include <stdio.h>
 #include <stdlib.h>
-/**
-void ImprimeInicioMissao(TipoTreinador *treinador, int numero_fugitivos);
-void ImprimeAlvo(TipoTreinador *treinador, TipoPokemon *pokemon, int indice_treinador);
-void ImprimeRetornoPC(TipoTreinador *treinador, int pokebolas_ganhas);
-void ConclusaoDaMissao(TipoTreinador *treinador);
-**/
+#include <time.h>
+
+
+void ImprimePokemonsCarregados(TipoPokemon *listapokemons, int quantidade);
+void ImprimeStatus(int poder_total, int energia_consumida,int energiadisponivel,clock_t tempo);
+void execucao();
+void ImprimeSelecionados(int *melhorequipe,TipoPokemon *lista);
+
 #endif

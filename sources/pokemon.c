@@ -95,7 +95,7 @@ int ImprimePokemon(TipoPokemon *pokemon) {
     getPokeNome(pokemon, PrintNome);   
     getPokeTipo(pokemon, PrintTipo);   
     
-    printf("ID: %-4d| Nome: %-15s| Tipo: %-15s | Poder: %-4d| Energia: %-4d\n",numero,PrintNome,PrintTipo,poder,energia);
+    printf("ID: %-4d| Nome: %-13s| Tipo: %-9s | Poder: %-4d| Energia: %-4d\n",numero,PrintNome,PrintTipo,poder,energia);
     return 1; 
 }
 

@@ -33,3 +33,7 @@ int leTreinador(FILE *arqtreinador, TipoTreinador *treinador) {
 char *getTreinadorNome(TipoTreinador *treinador) {
     return treinador->nome;
 }
+
+PokeLista *getPokelista(TipoTreinador *treinador){
+    return &treinador->pokelista;
+}

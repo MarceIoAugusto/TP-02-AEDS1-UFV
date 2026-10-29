@@ -18,5 +18,6 @@ int leTreinador(FILE *arqtreinador, TipoTreinador *treinador);
 
 // Funçoes para receber os dados do Treinador
 char *getTreinadorNome(TipoTreinador *treinador);
+PokeLista *getPokelista(TipoTreinador *treinador);
 
 #endif

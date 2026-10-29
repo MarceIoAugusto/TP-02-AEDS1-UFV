@@ -1,6 +1,6 @@
 Ash
 Misty
-6
+10
 250
 1 Bulbasaur Planta 40 30
 4 Charmander Fogo 50 40

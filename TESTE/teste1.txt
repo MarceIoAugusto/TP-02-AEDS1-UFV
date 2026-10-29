@@ -1,0 +1,24 @@
+Crystal
+Gold
+20
+250
+1 Bulbasaur Planta 40 30
+4 Charmander Fogo 50 40
+7 Squirtle Agua 30 20
+25 Pikachu Eletrico 60 50
+16 Pidgey Voador 20 10
+133 Eevee Normal 45 25
+143 Snorlax Normal 80 65
+10 Caterpie Inseto 15 10
+13 Weedle Inseto 15 10
+19 Rattata Normal 25 15
+21 Spearow Voador 30 20
+23 Ekans Venenoso 35 25
+27 Sandshrew Terra 40 30
+29 NidoranF Venenoso 35 25
+32 NidoranM Venenoso 35 25
+35 Clefairy Fada 45 35
+37 Vulpix Fogo 45 30
+39 Jigglypuff Fada 40 35
+41 Zubat Venenoso 25 15
+43 Oddish Planta 40 25

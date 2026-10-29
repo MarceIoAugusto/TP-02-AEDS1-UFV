@@ -54,6 +54,7 @@
 
  int main(){
 
+    clock_t tempo;
     TipoTreinador treinadores[NUM_TREINADORES]; // Lista de treinadores
     TipoPokemon *ListaArranjo; // Lista de pokemons do arquivo
     ListaArranjo = NULL; // Inicializa o ponteiro como NULL
@@ -61,41 +62,87 @@
     int EnergiaDisponivel = 0;
 
     // Leitura dos dados do arquivo de entrada
-    FILE *fptr = fopen("teste2.txt","r");
+    FILE *fptr = fopen("teste1.txt","r");
     if(fptr==NULL){
         printf("Erro ao abrir o arquivo de entrada.\n");
         return 1;
     }
     CarregaDados(fptr,treinadores,&ListaArranjo,&EnergiaDisponivel,&QuantidadePokemons);
     fclose(fptr);
+    
+    ImprimePokemonsCarregados(ListaArranjo, QuantidadePokemons); //impressao dos pokemons carregados do arquivo
+    execucao(); //impressao do inicio da execucao do algoritmo de selecao de pokemons
 
-    //Geracao de combinacoes de equipes
+    //Variaveis auxiliares
+    int melhorequipe[QuantidadePokemons]; // Vetor para armazenar a melhor equipe encontrada(retem os indices dos pokemons na lista de pokemons)
+    int maiorpoder =0;
+    int energiaconsumida=0;
+    int tamanho_melhor_equipe=0;
+    tempo = clock(); // Inicia a contagem do tempo de execução(apenas para a geração de combinações e cálculo da melhor equipe)
 
-    /*int melhorequipe[QuantidadePokemons];*/
-
+    // Geração de combinacoes das equipes e seleçcao da melhor equipe
     for(int k=1; k<=QuantidadePokemons;k++){
         int aux[k];
-        //inicializa a primeira combinação
+        int poder=0;
+        int energia=0;
+        //inicializa a primeira combinação de tamanho k
         for(int i=0; i<k; i++){
             aux[i] = i;
+            poder += ListaArranjo[aux[i]].Poder;
+            energia += ListaArranjo[aux[i]].EnergiaGasta;
         }
-        // A primeira combinação já foi gerada, então imprimimos. alem de ser a entrada para o while.
-        printf("========================Combinacoes de tamanho %d========================\n", k);
-        for(int i=0; i<k; i++){
-            ImprimePokemon(&ListaArranjo[aux[i]]);
-        }
-        printf("\n");
-        while (ProximaCombinacao(aux, QuantidadePokemons, k)){
-            for(int i=0; i<k; i++){
-                ImprimePokemon(&ListaArranjo[aux[i]]);
+        // Analisa se a primeira combinação de tamanho k é a melhor até agora
+        if((energia<=EnergiaDisponivel) && (poder > maiorpoder)){
+            maiorpoder = poder;
+            energiaconsumida=energia;
+            tamanho_melhor_equipe = k;
+            for(int i=0; i<k; i++){ // Entra no loop sse a combinação atual é melhor que a anterior
+                melhorequipe[i] = aux[i];
+                if(i==k-1){
+                    melhorequipe[i+1]=-1; // Marca o final da equipe com -1 (nao é um índice válido)    
+                }
             }
-            printf("\n");
+        }
+        while (ProximaCombinacao(aux, QuantidadePokemons, k)){
+            poder=0;
+            energia=0;
+            for(int i=0;i<k;i++){
+                poder += ListaArranjo[aux[i]].Poder;
+                energia += ListaArranjo[aux[i]].EnergiaGasta;
+            }
+            if((energia<=EnergiaDisponivel) && (poder > maiorpoder)){
+            maiorpoder = poder;
+            energiaconsumida=energia;
+            tamanho_melhor_equipe = k;
+            for(int i=0; i<k; i++){ // Entra no loop sse a combinação atual é melhor que a anterior
+                melhorequipe[i] = aux[i];
+                if(i==k-1){
+                    melhorequipe[i+1]=-1; // Marca o final da equipe com -1 (nao é um índice válido)    
+                }
+            }
+        }
+        tempo = clock() - tempo; // Finaliza a contagem do tempo de execução(apenas para a geração de combinações e cálculo da melhor equipe)
+
         }
     }
 
+    ImprimeStatus(maiorpoder, energiaconsumida, EnergiaDisponivel, tempo); //imprime o status da melhor equipe encontrada
+    ImprimeSelecionados(melhorequipe,ListaArranjo); //imprime os pokemons selecionados para a melhor equipe 
+    
+    
+    //divide os pokemons entre os treinadores
+    for(int i=0;i<tamanho_melhor_equipe;i++){
+        int temp = i%NUM_TREINADORES;
+        InserePokemon(getPokelista(&treinadores[temp]),&ListaArranjo[melhorequipe[i]]);
+    }
+
+    //imprime o a mochila de cada treinador
+    printf("\n=== Equipes dos Treinadores ===\n");
+    for(int i=0;i<NUM_TREINADORES;i++){
+        printf("treinador 1: %s\n",getTreinadorNome(&treinadores[i]));
+        ImprimeLista(getPokelista(&treinadores[i]));
+    }
 
     free(ListaArranjo); // Libera a memória alocada para a lista de pokemons
-
-
     return 0; 
  }
