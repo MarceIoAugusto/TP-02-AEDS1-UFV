@@ -63,12 +63,12 @@ int LePokemon(FILE *arquivo, TipoPokemon *saida) {
     char Nome[TAM_NOMEP];
     char Tipo[TAM_TIPO];
     int poder, energia;   
-    // %14s = no maximo 14 letras, deixando espaco para o '\0' pois o TAM_NOMEP = 15
-    if (fscanf(arquivo, "%d %14s %14s %d %d", &numero, Nome, Tipo, &poder, &energia) == 5) {
+    // %13s = no maximo 13 letras, deixando espaco para o '\0' pois o TAM_NOMEP = 13 e pokemons tem no maximo 12 letras.
+    if (fscanf(arquivo, "%d %13s %9s %d %d", &numero, Nome, Tipo, &poder, &energia) == 5) {
         InicializaPokemon(saida,numero, Nome, Tipo, poder, energia);
         return 1;
     } else {
-        return ERRO;
+        return 0;
     }
 }
 
@@ -85,6 +85,7 @@ int InicializaPokemon(TipoPokemon *pokemon,int numeroentrada,
 
 /* ---------- IMPRESSAO ---------- */
 
+//Imprime os dados do pokemon na tela
 int ImprimePokemon(TipoPokemon *pokemon) {
     char PrintNome[TAM_NOMEP];
     char PrintTipo[TAM_TIPO];
@@ -99,4 +100,18 @@ int ImprimePokemon(TipoPokemon *pokemon) {
     return 1; 
 }
 
+//Imprime os dados do pokemon no arquivo de saida
+int ImprimePokemonFile(FILE *saida, TipoPokemon *pokemon) {
+    char PrintNome[TAM_NOMEP];
+    char PrintTipo[TAM_TIPO];
+    int numero, poder, energia;
+    numero=getPokeNumero(pokemon);
+    poder=getPokePoder(pokemon);
+    energia=getPokeEnergiaGasta(pokemon);
+    getPokeNome(pokemon, PrintNome);   
+    getPokeTipo(pokemon, PrintTipo);   
+    
+    fprintf(saida, "ID: %-4d| Nome: %-13s| Tipo: %-9s | Poder: %-4d| Energia: %-4d\n",numero,PrintNome,PrintTipo,poder,energia);
+    return 1; 
+}
 

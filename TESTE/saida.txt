@@ -1,0 +1,79 @@
+--- Pokemons Carregados ---
+ID: 1   | Nome: Bulbasaur    | Tipo: Planta    | Poder: 40  | Energia: 30  
+ID: 4   | Nome: Charmander   | Tipo: Fogo      | Poder: 50  | Energia: 40  
+ID: 7   | Nome: Squirtle     | Tipo: Agua      | Poder: 30  | Energia: 20  
+ID: 25  | Nome: Pikachu      | Tipo: Eletrico  | Poder: 60  | Energia: 50  
+ID: 16  | Nome: Pidgey       | Tipo: Voador    | Poder: 20  | Energia: 10  
+ID: 133 | Nome: Eevee        | Tipo: Normal    | Poder: 45  | Energia: 25  
+ID: 143 | Nome: Snorlax      | Tipo: Normal    | Poder: 80  | Energia: 65  
+ID: 10  | Nome: Caterpie     | Tipo: Inseto    | Poder: 15  | Energia: 10  
+ID: 13  | Nome: Weedle       | Tipo: Inseto    | Poder: 15  | Energia: 10  
+ID: 19  | Nome: Rattata      | Tipo: Normal    | Poder: 25  | Energia: 15  
+ID: 21  | Nome: Spearow      | Tipo: Voador    | Poder: 30  | Energia: 20  
+ID: 23  | Nome: Ekans        | Tipo: Venenoso  | Poder: 35  | Energia: 25  
+ID: 27  | Nome: Sandshrew    | Tipo: Terra     | Poder: 40  | Energia: 30  
+ID: 29  | Nome: NidoranF     | Tipo: Venenoso  | Poder: 35  | Energia: 25  
+ID: 32  | Nome: NidoranM     | Tipo: Venenoso  | Poder: 35  | Energia: 25  
+ID: 35  | Nome: Clefairy     | Tipo: Fada      | Poder: 45  | Energia: 35  
+ID: 37  | Nome: Vulpix       | Tipo: Fogo      | Poder: 45  | Energia: 30  
+ID: 39  | Nome: Jigglypuff   | Tipo: Fada      | Poder: 40  | Energia: 35  
+ID: 41  | Nome: Zubat        | Tipo: Venenoso  | Poder: 25  | Energia: 15  
+ID: 43  | Nome: Oddish       | Tipo: Planta    | Poder: 40  | Energia: 25  
+ID: 46  | Nome: Paras        | Tipo: Inseto    | Poder: 35  | Energia: 20  
+ID: 48  | Nome: Venonat      | Tipo: Inseto    | Poder: 35  | Energia: 25  
+ID: 50  | Nome: Diglett      | Tipo: Terra     | Poder: 30  | Energia: 15  
+ID: 52  | Nome: Meowth       | Tipo: Normal    | Poder: 30  | Energia: 20  
+ID: 54  | Nome: Psyduck      | Tipo: Agua      | Poder: 40  | Energia: 30  
+ID: 56  | Nome: Mankey       | Tipo: Lutador   | Poder: 40  | Energia: 30  
+ID: 58  | Nome: Growlithe    | Tipo: Fogo      | Poder: 55  | Energia: 40  
+ID: 60  | Nome: Poliwag      | Tipo: Agua      | Poder: 30  | Energia: 20  
+ID: 63  | Nome: Abra         | Tipo: Psiquico  | Poder: 40  | Energia: 20  
+ID: 66  | Nome: Machop       | Tipo: Lutador   | Poder: 50  | Energia: 40  
+
+=== Executando Selecao de Pokemons (Forca Bruta) ===
+
+=== Melhor Equipe Encontrada ===
+Poder Total: 440
+Energia Total Consumida: 265 / 266
+Tempo de Execucao: 50.558992 segundos (50558.992 ms)
+
+Pokemons Selecionados para a Equipe:
+ID: 7   | Nome: Squirtle     | Tipo: Agua      | Poder: 30  | Energia: 20  
+ID: 16  | Nome: Pidgey       | Tipo: Voador    | Poder: 20  | Energia: 10  
+ID: 133 | Nome: Eevee        | Tipo: Normal    | Poder: 45  | Energia: 25  
+ID: 10  | Nome: Caterpie     | Tipo: Inseto    | Poder: 15  | Energia: 10  
+ID: 19  | Nome: Rattata      | Tipo: Normal    | Poder: 25  | Energia: 15  
+ID: 21  | Nome: Spearow      | Tipo: Voador    | Poder: 30  | Energia: 20  
+ID: 37  | Nome: Vulpix       | Tipo: Fogo      | Poder: 45  | Energia: 30  
+ID: 41  | Nome: Zubat        | Tipo: Venenoso  | Poder: 25  | Energia: 15  
+ID: 43  | Nome: Oddish       | Tipo: Planta    | Poder: 40  | Energia: 25  
+ID: 46  | Nome: Paras        | Tipo: Inseto    | Poder: 35  | Energia: 20  
+ID: 50  | Nome: Diglett      | Tipo: Terra     | Poder: 30  | Energia: 15  
+ID: 52  | Nome: Meowth       | Tipo: Normal    | Poder: 30  | Energia: 20  
+ID: 60  | Nome: Poliwag      | Tipo: Agua      | Poder: 30  | Energia: 20  
+ID: 63  | Nome: Abra         | Tipo: Psiquico  | Poder: 40  | Energia: 20  
+
+=== Equipes dos Treinadores ===
+treinador 1: Crystal
+Mochila do Treinador:
+ID: 7   | Nome: Squirtle     | Tipo: Agua      | Poder: 30  | Energia: 20  
+ID: 133 | Nome: Eevee        | Tipo: Normal    | Poder: 45  | Energia: 25  
+ID: 19  | Nome: Rattata      | Tipo: Normal    | Poder: 25  | Energia: 15  
+ID: 37  | Nome: Vulpix       | Tipo: Fogo      | Poder: 45  | Energia: 30  
+ID: 43  | Nome: Oddish       | Tipo: Planta    | Poder: 40  | Energia: 25  
+ID: 50  | Nome: Diglett      | Tipo: Terra     | Poder: 30  | Energia: 15  
+ID: 60  | Nome: Poliwag      | Tipo: Agua      | Poder: 30  | Energia: 20  
+
+treinador 2: Gold
+Mochila do Treinador:
+ID: 16  | Nome: Pidgey       | Tipo: Voador    | Poder: 20  | Energia: 10  
+ID: 10  | Nome: Caterpie     | Tipo: Inseto    | Poder: 15  | Energia: 10  
+ID: 21  | Nome: Spearow      | Tipo: Voador    | Poder: 30  | Energia: 20  
+ID: 41  | Nome: Zubat        | Tipo: Venenoso  | Poder: 25  | Energia: 15  
+ID: 46  | Nome: Paras        | Tipo: Inseto    | Poder: 35  | Energia: 20  
+ID: 52  | Nome: Meowth       | Tipo: Normal    | Poder: 30  | Energia: 20  
+ID: 63  | Nome: Abra         | Tipo: Psiquico  | Poder: 40  | Energia: 20  
+
+
+=== Fim da Execucao ===
+OBS: O arquivo de saída (saida.txt) sempre sobrescreve o conteúdo anterior.

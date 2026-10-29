@@ -38,13 +38,24 @@ TipoPokemon *getPrimeiroItem(PokeLista Lista) {
     return &Lista.Primeiro->Proximo->Pokemon;
 }
 
-//Percorre a lista e Imprime todos os pokemons
+//Percorre a lista e Imprime todos os pokemons na tela
 void ImprimeLista(PokeLista *Lista) {
     PokeCelula *curr;
     curr = Lista->Primeiro->Proximo; // pula a celula cabeca
 
     while (curr != NULL) {
         ImprimePokemon(&curr->Pokemon);
+        curr = curr->Proximo;
+    }
+}
+
+//Percorre a lista e Imprime todos os pokemons no arquivo de saida.txt
+void ImprimeListaFile(FILE *saida, PokeLista *Lista) {
+    PokeCelula *curr;
+    curr = Lista->Primeiro->Proximo; // pula a celula cabeca
+
+    while (curr != NULL) {
+        ImprimePokemonFile(saida, &curr->Pokemon);
         curr = curr->Proximo;
     }
 }

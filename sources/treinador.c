@@ -21,8 +21,8 @@ void InicializaTreinador(TipoTreinador *treinador, char *nomeTemp) {
 }
 
 int leTreinador(FILE *arqtreinador, TipoTreinador *treinador) {
-    char nome[TAM_NOMET];
-    if (fscanf(arqtreinador, "%15s", nome) == 1) {
+    char nome[TAM_NOMET]; // 25 caracteres para o nome do treinador com espaço para o caractere nulo '\0'
+    if (fscanf(arqtreinador, "%25s", nome) == 1) {
         InicializaTreinador(treinador, nome);
         return 1;
     }

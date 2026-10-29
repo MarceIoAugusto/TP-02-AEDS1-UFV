@@ -28,5 +28,5 @@ void setPokeTipo(TipoPokemon *pokemon, char *tipoentrada);
 void setPokePoder(TipoPokemon *pokemon, int poderentrada);
 void setPokeEnergiaGasta(TipoPokemon *pokemon, int energiagastaentrada);
 int ImprimePokemon(TipoPokemon *pokemon);
-
+int ImprimePokemonFile(FILE *saida, TipoPokemon *pokemon);
 #endif
