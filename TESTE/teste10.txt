@@ -1,5 +1,5 @@
-Ash
-Misty
+Crystal
+Gold
 10
 250
 1 Bulbasaur Planta 40 30
@@ -12,3 +12,4 @@ Misty
 10 Caterpie Inseto 15 10
 13 Weedle Inseto 15 10
 19 Rattata Normal 25 15
+21 Spearow Voador 30 20

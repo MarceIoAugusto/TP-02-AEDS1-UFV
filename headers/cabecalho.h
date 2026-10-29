@@ -7,7 +7,6 @@
 #define NUM_TREINADORES 2
 #define ERRO -1
 
-#define MAX_POKEDEX 1025   // Numero maximo de pokemons na pokedex
 #define TAM_ARQUIVO 100    // Tamanho do nome do arquivo de entrada
 #define NOME_SAIDA "saida.txt"
 

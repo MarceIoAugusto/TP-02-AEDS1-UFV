@@ -22,29 +22,21 @@
         exit(EXIT_FAILURE);
     }
     
-    while(LePokemon(fptr,&temp)){
+    while( (cont<*quantidade) && LePokemon(fptr,&temp)){ // cont<*quantidade impede estourar o vetor caso tenha mais pokemons que o informado
         (*listaarranjo)[cont]=temp;
         cont++;
     }
-    
-    /*
-    for(int i=0;i<*quantidade;i++){
-        TipoPokemon temp; //variavel temporaria para armazenar o pokemon lido do arquivo
-        cont += LePokemon(fptr,&temp);
-        (*listaarranjo)[i]=temp;
-    }
-    */
     if(*quantidade != cont){
         printf("\x1b[31mFLAG:ERRO AO LER POKEMONS.\nQUANTIDADE INFORMADA (%d) DIVERGE DA QUANTIDADE DE POKEMONS DISPONIVEIS PARA LEITURA.\x1b[0m\n", *quantidade);
         printf("\x1b[31mO programa ira continuar, mas a quantidade de pokemons lidos sera %d. \x1b[0m\n",cont);
         *quantidade = cont;
     }
-
-    
 }
 
  //calcula a proxima combinacao de k elementos de um conjunto de n elementos
  int ProximaCombinacao(int a[], int n, int k){
+    // Adaptado do algoritmo 4.3 pag 58 do livro Combinatorial Generation
+    // Autor: Frank Ruskey <- DISPONIVEL NA INTERNET
     int j = k - 1;
 
     /* Procura a posição mais à direita que pode aumentar. */
@@ -64,7 +56,6 @@
     for (int i = j + 1; i < k; i++) {
         a[i] = a[i - 1] + 1;
     }
-
     return 1;
 }
 
@@ -72,6 +63,18 @@ void DistribuiPokemons(TipoTreinador *treinadores, TipoPokemon *ListaArranjo, in
     for(int i=0;i<tamanho_melhor_equipe;i++){
         int temp = i%NUM_TREINADORES;
         InserePokemon(getPokelista(&treinadores[temp]),&ListaArranjo[melhorequipe[i]]);
+    }
+}
+
+
+void AvaliaCombinacao(int *melhorequipe, int *aux, int *energia, int *EnergiaDisponivel, int *energiaconsumida, int *poder, int *maiorpoder,int *tamanho_melhor_equipe,int *k){
+    if((*energia<=*EnergiaDisponivel) && (*poder >*maiorpoder)){//em caso de empate no poder a atual melhor equipe é mantida
+        *maiorpoder = *poder;
+        *energiaconsumida=*energia;
+        *tamanho_melhor_equipe = *k;
+        for(int i=0; i<*k; i++){ // Entra no loop sse a combinação atual é melhor que a anterior
+            melhorequipe[i] = aux[i];
+        }
     }
 }
 
@@ -118,34 +121,20 @@ int main(){
         //inicializa a primeira combinação de tamanho k
         for(int i=0; i<k; i++){
             aux[i] = i;
-            poder += ListaArranjo[aux[i]].Poder;
-            energia += ListaArranjo[aux[i]].EnergiaGasta;
+            poder += getPokePoder(&ListaArranjo[aux[i]]);
+            energia += getPokeEnergiaGasta(&ListaArranjo[aux[i]]);
         }
         // Analisa se a primeira combinação de tamanho k é a melhor até agora
-        if((energia<=EnergiaDisponivel) && (poder > maiorpoder)){
-            maiorpoder = poder;
-            energiaconsumida=energia;
-            tamanho_melhor_equipe = k;
-            for(int i=0; i<k; i++){ // Entra no loop sse a combinação atual é melhor que a anterior
-                melhorequipe[i] = aux[i];
-            }
-        }
+        AvaliaCombinacao(melhorequipe,aux,&energia,&EnergiaDisponivel,&energiaconsumida,&poder,&maiorpoder,&tamanho_melhor_equipe,&k);
+    
         while (ProximaCombinacao(aux, QuantidadePokemons, k)){
             poder=0;
             energia=0;
             for(int i=0;i<k;i++){
-                poder += ListaArranjo[aux[i]].Poder;
-                energia += ListaArranjo[aux[i]].EnergiaGasta;
+                poder += getPokePoder(&ListaArranjo[aux[i]]);
+                energia += getPokeEnergiaGasta(&ListaArranjo[aux[i]]);
             }
-            if((energia<=EnergiaDisponivel) && (poder > maiorpoder)){
-                maiorpoder = poder;
-                energiaconsumida=energia;
-                tamanho_melhor_equipe = k;
-                for(int i=0; i<k; i++){ // Entra no loop sse a combinação atual é melhor que a anterior
-                    melhorequipe[i] = aux[i];
-                }
-            }
-            
+            AvaliaCombinacao(melhorequipe,aux,&energia,&EnergiaDisponivel,&energiaconsumida,&poder,&maiorpoder,&tamanho_melhor_equipe,&k);
         }
     }
     fim = clock(); // Finaliza a contagem do tempo de execução(apenas para a geração de combinações e cálculo da melhor equipe)
@@ -171,4 +160,4 @@ int main(){
     }
     free(ListaArranjo); // Libera a memória alocada para a lista de pokemons
     return 0; 
- }
+}

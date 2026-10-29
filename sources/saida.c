@@ -29,7 +29,7 @@ void ImprimeSelecionados(int *melhorequipe,TipoPokemon *lista, int tamanho){
 void ImprimeTreinadores(TipoTreinador *treinadores){
     printf("\n=== Equipes dos Treinadores ===\n");
         for(int i=0;i<NUM_TREINADORES;i++){
-            printf("treinador %d: %s\n", i+1, getTreinadorNome(&treinadores[i]));
+            printf("Treinador %d: %s\n", i+1, getTreinadorNome(&treinadores[i]));
             printf("Mochila do Treinador:\n");
             ImprimeLista(getPokelista(&treinadores[i]));
             printf("\n");
@@ -67,7 +67,7 @@ void ImprimeSaida(TipoPokemon *listapokemons, TipoTreinador *treinadores, int *m
     // Imprime as equipes dos treinadores e suas mochilas
     fprintf(saida, "\n=== Equipes dos Treinadores ===\n");
         for(int i=0;i<NUM_TREINADORES;i++){
-            fprintf(saida, "treinador %d: %s\n", i+1, getTreinadorNome(&treinadores[i]));
+            fprintf(saida, "Treinador %d: %s\n", i+1, getTreinadorNome(&treinadores[i]));
             fprintf(saida, "Mochila do Treinador:\n");
             ImprimeListaFile(saida,getPokelista(&treinadores[i]));
             fprintf(saida, "\n");
